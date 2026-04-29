@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react'
 import { visualizer } from 'rollup-plugin-visualizer'
 import path from 'path'
 
+const timeStamp = new Date().getTime()
+
 export default defineConfig({
   plugins: [
     react(),
@@ -20,17 +22,12 @@ export default defineConfig({
   },
 
   build: {
-    target: 'es2018',
-    minify: 'esbuild',
-    sourcemap: false,
-    cssCodeSplit: true,
-    chunkSizeWarningLimit: 800,
-
+    outDir:'dist',
     rollupOptions: {
       output: {
-        manualChunks: {
-          react: ['react', 'react-dom']
-        }
+        entryFileNames:`assests/[name]-[hash]_${timeStamp}.js`,
+        chunkFileNames:`assests/[name]-[hash]_${timeStamp}.js`,
+        assetFileNames:`assests/[name]-[hash]_${timeStamp}[extname]`
       }
     }
   },
