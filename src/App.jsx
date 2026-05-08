@@ -1,11 +1,12 @@
 import { useState } from 'react'
 
 export default function App() {
+  const mode= import.meta.env.VITE_ENV_MOD
   const [count, setCount] = useState(0)
 
   return (
     <div className="container">
-      <h1>🚀 My First React Page</h1>
+      <h1>🚀 My First React Page {mode}</h1>
 
       <p>This is a simple React page using Vite.</p>
 
