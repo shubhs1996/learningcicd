@@ -5,7 +5,7 @@ import path from 'path'
 
 const timeStamp = new Date().getTime()
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     visualizer({
@@ -22,12 +22,12 @@ export default defineConfig({
   },
 
   build: {
-    outDir:'dist',
+    outDir: `dist-${mode}`,
     rollupOptions: {
       output: {
-        entryFileNames:`assests/[name]-[hash]_${timeStamp}.js`,
-        chunkFileNames:`assests/[name]-[hash]_${timeStamp}.js`,
-        assetFileNames:`assests/[name]-[hash]_${timeStamp}[extname]`
+        entryFileNames: `assests/[name]-[hash]_${timeStamp}.js`,
+        chunkFileNames: `assests/[name]-[hash]_${timeStamp}.js`,
+        assetFileNames: `assests/[name]-[hash]_${timeStamp}[extname]`
       }
     }
   },
@@ -36,4 +36,4 @@ export default defineConfig({
     port: 5173,
     open: true
   }
-})
+}))
